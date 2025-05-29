@@ -18,7 +18,7 @@ def seed_data():
 
     session.add_all([alice, bob, cause, donation])
     session.commit()
-    print("✅ Seed data added!")
+    print(" Seed data added!")
 
 # You can run this file directly to seed your DB
 if __name__ == "__main__":

@@ -8,4 +8,4 @@ def get_int_input(prompt):
         try:
             return int(input(prompt))
         except ValueError:
-            print("❌ Please enter a valid number.")
+            print(" Please enter a valid number.")
