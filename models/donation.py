@@ -7,7 +7,7 @@ class Donation(Base):
     __tablename__ = 'donations'
 
     id = Column(Integer, primary_key=True)
-    donor_id = Column(Integer, ForeignKey('donors.id'))  # updated from user_id
+    donor_id = Column(Integer, ForeignKey('donors.id'))  
     cause_id = Column(Integer, ForeignKey('causes.id'))
     amount = Column(Integer, nullable=False)
     donated_at = Column(DateTime, default=datetime.utcnow)
@@ -15,7 +15,7 @@ class Donation(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
-    donor = relationship("Donor", back_populates="donations")  # singular
+    donor = relationship("Donor", back_populates="donations")  
     cause = relationship("Cause", back_populates="donations")
 
     def __repr__(self):

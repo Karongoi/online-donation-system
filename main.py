@@ -17,8 +17,8 @@ def register_user(session, user_type):
         if existing:
             print("Email already registered as donor.")
             return None
-        user = Donor(username=username, email=email, balance=1000)  # example initial balance
-    else:  # organiser
+        user = Donor(username=username, email=email, balance=1000) 
+    else:  
         existing = session.query(Organiser).filter(Organiser.email == email).first()
         if existing:
             print("Email already registered as organizer.")
@@ -68,7 +68,6 @@ def login():
     session.close()
 
 
-# Organizer menu and functions
 def organiser_menu(user, session):
     while True:
         print("\nOrganizer Menu:")
@@ -82,7 +81,7 @@ def organiser_menu(user, session):
         choice = input("Select an option: ")
 
         if choice == '1':
-            create_cause(session, user)  # pass organiser user
+            create_cause(session, user)  
         elif choice == '2':
             add_donor(session)
         elif choice == '3':
@@ -113,7 +112,7 @@ def create_cause(session, organiser):
         description=description,
         target_amount=target_amount,
         collected_amount=0,
-        organiser_id=organiser.id  # set the current organiser as the owner!
+        organiser_id=organiser.id  
     )
     session.add(cause)
     session.commit()
@@ -231,7 +230,7 @@ def delete_donor_or_cause(session):
         print("Invalid choice.")
 
 
-# Donor menu and functions
+
 def donor_menu(user, session):
     while True:
         print("\nDonor Menu:")
@@ -305,13 +304,13 @@ def donate(user, session):
         print("Insufficient balance.")
         return
 
-    # Create donation record
+    
     donation = Donation(donor_id=user.id, cause_id=cause.id, amount=amount)
     session.add(donation)
 
-    # Update donor balance
+    
     user.balance -= amount
-    # Update cause collected amount
+    
     cause.collected_amount += amount
 
     session.commit()

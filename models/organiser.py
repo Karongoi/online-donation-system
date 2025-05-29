@@ -1,5 +1,3 @@
-# organiser.py (or wherever your Organiser model is)
-
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.orm import relationship
 from database import Base
@@ -18,4 +16,3 @@ class Organiser(Base):
 
     def __repr__(self):
         return f"<Organiser(username='{self.username}', email='{self.email}')>"
-
